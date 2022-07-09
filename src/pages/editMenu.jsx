@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import { app } from "../base";
 
 //import components
 import Header from "../components/header";
@@ -34,6 +36,7 @@ function EditMenu() {
         img: "",
         name: "",
         price: "",
+        file: "",
     });
 
     const dispatch = useDispatch();
@@ -55,6 +58,19 @@ function EditMenu() {
         const name = e.target.name;
         const value = e.target.value;
 
+        if (name === "img") {
+            //get img file data
+            console.log("on change img triggered!");
+            console.log("files:", e.target.files[0]);
+            const file = e.target.files[0];
+            setFormData((prev) => {
+                return { ...prev, img: "placeholder.jpg" };
+            });
+            setFormData((prev) => {
+                return { ...prev, file: file };
+            });
+        }
+
         setFormData((prev) => {
             return { ...prev, [name]: value };
         });
@@ -65,18 +81,52 @@ function EditMenu() {
         dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
 
-        updateMenus({
-            variables: {
-                id: id,
-                object: {
-                    img: formData.img,
-                    name: formData.name,
-                    price: formData.price,
+        if (formData.name === "" || formData.price === "" || formData.img === "") {
+            alert("Data belum lengkap!");
+        } else if (formData.img.includes("firebasestorage.googleapis.com")) {
+            updateMenus({
+                variables: {
+                    id: id,
+                    object: {
+                        img: formData.img,
+                        name: formData.name,
+                        price: formData.price,
+                    },
                 },
-            },
-        });
-        alert("Data berhasil dikirim ke database!");
-        history.push("/menu");
+            });
+            alert("Data berhasil dikirim ke database!");
+            history.push("/menu");
+        } else {
+            // send image to firebase
+            const file = formData.file;
+            const storageRef = app.storage().ref();
+            console.log("tetete", uuidv4());
+            const fileRef = storageRef.child(`${file.name}${uuidv4()}`);
+            console.log("file = ", file);
+            console.log("storageRef = ", storageRef);
+            console.log("fileRef = ", fileRef);
+            fileRef.put(file).then((e) => {
+                console.log("Uploaded a file");
+                console.log("didalam e = ", e);
+                e.ref.getDownloadURL().then(function (downloadURL) {
+                    console.log("File available at", downloadURL);
+                    // insert data to hasura
+                    updateMenus({
+                        variables: {
+                            id: id,
+                            object: {
+                                img: downloadURL,
+                                name: formData.name,
+                                price: formData.price,
+                            },
+                        },
+                    });
+                    console.log("Data berhasil dikirim ke database!");
+                    alert("Data berhasil dikirim ke database!");
+                    history.push("/menu");
+                });
+            });
+        }
     }
 
     return (
@@ -123,17 +173,16 @@ function EditMenu() {
                     <div class="md:flex md:items-center mb-6">
                         <div class="md:w-1/3">
                             <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="img">
-                                Link Gambar
+                                Gambar
                             </label>
                         </div>
                         <div class="md:w-2/3">
                             <input
-                                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                class="appearance-none w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                                 id="img"
                                 name="img"
-                                type="text"
-                                placeholder={formData.img}
-                                value={formData.img}
+                                type="file"
+                                accept="image/png, image/jpeg"
                                 onChange={handleChange}
                             />
                         </div>
