@@ -129,7 +129,7 @@ function EditPost() {
                         </div>
                         <div class="md:w-2/3">
                             <button
-                                class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                class="shadow bg-green-600 hover:bg-green-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                                 type="submit"
                             >
                                 Edit Post

@@ -38,7 +38,7 @@ function Header() {
             </div>
             <div class="block lg:hidden">
                 <button
-                    class="flex items-center px-3 py-2 border rounded text-amber-200 border-amber-400 hover:text-white hover:border-white"
+                    class="flex items-center px-3 py-2 border rounded text-amber-50 border-amber-400 hover:text-white hover:border-white"
                     onClick={toggleHidden}
                 >
                     <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -55,16 +55,16 @@ function Header() {
                 }
             >
                 <div class="text-sm lg:flex-grow">
-                    <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-amber-200 hover:text-white mr-4">
+                    <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-amber-50 hover:text-white mr-4">
                         Home
                     </a>
-                    <a href="/about" class="block mt-4 lg:inline-block lg:mt-0 text-amber-200 hover:text-white mr-4">
+                    <a href="/about" class="block mt-4 lg:inline-block lg:mt-0 text-amber-50 hover:text-white mr-4">
                         About
                     </a>
-                    <a href="/menu" class="block mt-4 lg:inline-block lg:mt-0 text-amber-200 hover:text-white mr-4">
+                    <a href="/menu" class="block mt-4 lg:inline-block lg:mt-0 text-amber-50 hover:text-white mr-4">
                         Menu
                     </a>
-                    <a href="/post" class="block mt-4 lg:inline-block lg:mt-0 text-amber-200 hover:text-white mr-4">
+                    <a href="/post" class="block mt-4 lg:inline-block lg:mt-0 text-amber-50 hover:text-white mr-4">
                         Post
                     </a>
                 </div>

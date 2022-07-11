@@ -53,7 +53,10 @@ function Post() {
 
             <div className="container mx-5">
                 {isAdmin && (
-                    <a href="/post/create" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
+                    <a
+                        href="/post/create"
+                        class="shadow bg-green-600 hover:bg-green-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    >
                         Buat post baru!
                     </a>
                 )}

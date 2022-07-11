@@ -53,7 +53,10 @@ function Menu() {
 
             <div className="container mx-5">
                 {isAdmin && (
-                    <a href="/menu/create" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
+                    <a
+                        href="/menu/create"
+                        class="shadow bg-green-600 hover:bg-green-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    >
                         Buat menu baru!
                     </a>
                 )}
@@ -126,6 +129,10 @@ function Menu() {
                             </svg>
                         </button>
                     </a>
+                </p>
+                <p>
+                    Jika ingin beli online dan diantar, Bisa pakai gofood, grabfood dan shopeefood dengan nama merchant nya
+                    MARTABAK BANGKA RONNY CIRACAS JL LAPANGAN TEMBAK sebrang Ramayana cibubur.
                 </p>
                 <a
                     href="https://gofood.co.id/jakarta/restaurant/martabak-bangka-ronny-ciracas-bd8b01e9-0133-4eb6-bb7e-07fbb1753a80"

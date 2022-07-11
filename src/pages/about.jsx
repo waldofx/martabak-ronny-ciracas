@@ -16,8 +16,12 @@ function About() {
             <div className="mx-20">
                 <div>
                     <h1 className="text-5xl font-bold text-red-600 flex justify-center mb-10">Martabak Ronny Ciracas</h1>
-                    <h6 className="font-bold mb-1">Sejarah Toko</h6>
-                    <p className="mb-4">lorem ipsum</p>
+                    <h6 className="font-bold mb-1">Mengenai Toko Martabak Ronny Ciracas</h6>
+                    <p className="mb-4">
+                        Toko ini awal berdirinya tahun 1995, saat itu masih hanya seorang yang berasal dari Bangka menjual makanan
+                        khas daerahnya dengan satu gerobak kecil. Sedikit demi sedikit, toko semakin besar dan sampai sekarang
+                        masih sama mutu dan kualitas martabak nya yang terkenal bagi rakyat Cibubur.
+                    </p>
                     <img
                         alt="Foto Toko Martabak"
                         src={Toko}
@@ -76,6 +80,9 @@ function About() {
                             "margin-bot": "20px",
                         }}
                     />
+                    <p className="mt-4 mb-4">
+                        Di atas terdapat gambar yang meilustrasikan berbagai nama berbeda untuk Hok Lo Pan di Indonesia.
+                    </p>
                 </div>
             </div>
             <Footer />
