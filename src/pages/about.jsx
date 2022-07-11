@@ -20,7 +20,7 @@ function About() {
                     <p className="mb-4">
                         Toko ini awal berdirinya tahun 1995, saat itu masih hanya seorang yang berasal dari Bangka menjual makanan
                         khas daerahnya dengan satu gerobak kecil. Sedikit demi sedikit, toko semakin besar dan sampai sekarang
-                        masih sama mutu dan kualitas martabak nya yang terkenal bagi rakyat Cibubur.
+                        masih sama mutu dan kualitas martabak nya yang terkenal bagi rakyat kecamatan Ciracas.
                     </p>
                     <img
                         alt="Foto Toko Martabak"
@@ -34,6 +34,11 @@ function About() {
                             "margin-bot": "20px",
                         }}
                     />
+                    <h6 className="font-bold mb-1">Alamat Lengkap</h6>
+                    <p>
+                        Jalan Raya Lapangan Tembak No.5, RT.2 Cibubur, Ciracas, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta
+                        13720, Indonesia.
+                    </p>
                     <div
                         style={{
                             "max-width": "500px",

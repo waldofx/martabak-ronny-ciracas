@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
+//import assets
 import Logo from "../assets/img/Logo.jpg";
 
 function Home() {

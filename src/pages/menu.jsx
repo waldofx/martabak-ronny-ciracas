@@ -10,6 +10,10 @@ import LoadingSVG from "../components/loadingsvg";
 import useGetMenusByPrice from "../hooks/useGetMenusByPrice";
 import useDeleteMenus from "../hooks/useDeleteMenus";
 
+//import assets
+import QRIS_BCA from "../assets/img/QRIS_BCA.png";
+import QRIS_OVO from "../assets/img/QRIS_OVO.png";
+
 function Menu() {
     //auth check
     let adminData = useSelector((state) => state.adminData.adminData);
@@ -70,7 +74,7 @@ function Menu() {
                 {!isError && !isLoading && (
                     <div>
                         <div className="bg-white">
-                            <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                            <div className="max-w-2xl mx-auto py-4 px-4 sm:py-8 sm:px-6 lg:max-w-7xl lg:px-8">
                                 <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                                     {menudatas.map((menudata) => (
                                         <div className="group">
@@ -110,14 +114,15 @@ function Menu() {
             </div>
 
             <div className="container mx-5 text-center">
-                <p>Harga diatas belum termasuk harga pengantaran makanan untuk pesanan online.</p>
-                <p className="mb-10">
+                <p>*Harga diatas belum termasuk harga pengantaran makanan untuk pesanan online.</p>
+                <p className="mb-5">
                     Setelah memilih yang ingin dipesan, silahkan memesan melalui Whatsapp <strong> No 0822-6067-9579 </strong>{" "}
                     Atau Klik di sini
                     <a
                         href="https://api.whatsapp.com/send?phone=6282260679579"
-                        // className="text-white font-bold bg-green-600 hover:bg-green-800 py-2 px-2 rounded"
                         className="ml-2"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <button>
                             <svg
@@ -130,22 +135,53 @@ function Menu() {
                         </button>
                     </a>
                 </p>
-                <p>
-                    Jika ingin beli online dan diantar, Bisa pakai gofood, grabfood dan shopeefood dengan nama merchant nya
-                    MARTABAK BANGKA RONNY CIRACAS JL LAPANGAN TEMBAK sebrang Ramayana cibubur.
-                </p>
-                <a
-                    href="https://gofood.co.id/jakarta/restaurant/martabak-bangka-ronny-ciracas-bd8b01e9-0133-4eb6-bb7e-07fbb1753a80"
-                    className="text-white font-bold bg-green-600 hover:bg-green-800 py-2 px-2 rounded mx-5 mt-5"
-                >
-                    GoFood
-                </a>
-                <a
-                    href="https://food.grab.com/id/id/restaurant/martabak-bangka-ronny-cibubur-delivery/6-CYLDLVCXT2BZWA"
-                    className="text-white font-bold bg-green-600 hover:bg-green-800 py-2 px-2 rounded m-5"
-                >
-                    GrabFood
-                </a>
+                <div className="mb-10">
+                    <div className="mb-5">
+                        <p>
+                            Setelah konfirmasi pesanan, silahkan bayar melalui transfer BCA - Rek. BCA atas nama Thjie Njun Tet
+                            628 118 2801.
+                        </p>
+                        <p>Atau Bayar melalui OVO atas nama Martabak Bangka Ronny.</p>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 place-items-center">
+                        <img
+                            src={QRIS_BCA}
+                            alt="QRIS_BCA"
+                            className="w-1/2 h-full object-center object-cover group-hover:opacity-75"
+                            // style={{ "max-height": "280px" }}
+                        />
+                        <img
+                            src={QRIS_OVO}
+                            alt="QRIS_OVO"
+                            className="w-1/2 h-full object-center object-cover group-hover:opacity-75"
+                            // style={{ "max-height": "280px" }}
+                        />
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        Jika ingin beli online dan diantar, bisa pakai gofood dan grabfood dengan nama merchant nya MARTABAK
+                        BANGKA RONNY CIRACAS CIBUBUR. Silahkan klik link dibawah ini:
+                    </p>
+                    <div className="mt-5 mb-10">
+                        <a
+                            href="https://gofood.co.id/jakarta/restaurant/martabak-bangka-ronny-ciracas-bd8b01e9-0133-4eb6-bb7e-07fbb1753a80"
+                            className="text-white font-bold bg-green-700 hover:bg-green-900 py-2 px-2 rounded mx-5 mt-5"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GoFood
+                        </a>
+                        <a
+                            href="https://food.grab.com/id/id/restaurant/martabak-bangka-ronny-cibubur-delivery/6-CYLDLVCXT2BZWA"
+                            className="text-white font-bold bg-green-700 hover:bg-green-900 py-2 px-2 rounded m-5"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GrabFood
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <Footer />

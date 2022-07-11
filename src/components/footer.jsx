@@ -20,9 +20,9 @@ function Footer() {
                             Lihat Rute
                         </a> */}
                         <p class="mt-2">
-                            <div>Jalan Raya Lapangan Tembak No.5, RT.2</div>
-                            <div>Cibubur, Ciracas, Kota Jakarta Timur</div>
-                            <div>Daerah Khusus Ibukota Jakarta 13720</div>
+                            <div>Jalan Raya Lapangan Tembak No.5, RT.2,</div>
+                            <div>Cibubur, Ciracas, Kota Jakarta Timur,</div>
+                            <div>Daerah Khusus Ibukota Jakarta, 13720,</div>
                             <div>Indonesia</div>
                         </p>
                     </div>
