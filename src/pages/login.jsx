@@ -67,7 +67,7 @@ function Login() {
             history.goBack();
         } else {
             console.log("Data submitted: ", adminData);
-            alert("Gagal login!");
+            alert("Gagal login! Username atau Password salah!");
         }
     }
 

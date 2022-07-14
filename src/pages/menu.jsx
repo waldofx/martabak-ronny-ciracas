@@ -142,6 +142,7 @@ function Menu() {
                             628 118 2801.
                         </p>
                         <p>Atau Bayar melalui OVO atas nama Martabak Bangka Ronny.</p>
+                        <p>Setelah sudah konfirmasi bayar pesanan silahkan ambil pesanan pada lokasi toko.</p>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 place-items-center">
                         <img
