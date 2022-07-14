@@ -10,16 +10,6 @@ import Footer from "../components/footer";
 //import hooks
 import { addAdminData } from "../store/adminDataSlice";
 
-// const GetAdminByLogin = gql`
-//     query MyQuery($_un: String = "", $_pw: String = "") {
-//         admin(where: { password: { _eq: $_pw }, username: { _eq: $_un } }) {
-//             id
-//             password
-//             username
-//         }
-//     }
-// `;
-
 const GetAdminByID = gql`
     query MyQuery($id: Int!) {
         admin(where: { id: { _eq: $id } }) {

@@ -25,9 +25,6 @@ function Home() {
                         <img alt="logo martabak" src={Logo} />
                     </div>
                 </div>
-                {/* <a href="/menu" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
-                    Lihat Menu!
-                </a> */}
             </div>
             <Footer />
         </div>

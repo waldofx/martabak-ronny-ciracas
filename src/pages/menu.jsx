@@ -155,7 +155,6 @@ function Menu() {
                             src={QRIS_OVO}
                             alt="QRIS_OVO"
                             className="w-1/2 h-full object-center object-cover group-hover:opacity-75"
-                            // style={{ "max-height": "280px" }}
                         />
                     </div>
                 </div>
