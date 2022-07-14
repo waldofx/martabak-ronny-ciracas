@@ -77,7 +77,9 @@ function Post() {
                                             <h3 className="mt-4 text-2xl font-medium font-bold text-gray-700">
                                                 {postdata.title}
                                             </h3>
-                                            <p className="mt-1 text-m text-gray-900 break-words">{postdata.content}</p>
+                                            <p className="mt-1 text-m text-gray-900 break-words">{postdata.created_at}</p>
+                                            <p className="mt-3 text-m text-gray-900 break-words">{postdata.content}</p>
+
                                             {isAdmin && (
                                                 <div className="mt-4">
                                                     <button

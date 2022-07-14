@@ -16,6 +16,9 @@ function CreatePost() {
         content: "",
     });
 
+    const current = new Date();
+    const date = `${current.getFullYear()}/${current.getMonth() + 1}/${current.getDate()}`;
+
     const dispatch = useDispatch();
     const history = useHistory();
     const { insertPosts } = useInsertPost();
@@ -37,6 +40,7 @@ function CreatePost() {
         insertPosts({
             variables: {
                 object: {
+                    created_at: date,
                     title: formData.title,
                     content: formData.content,
                 },

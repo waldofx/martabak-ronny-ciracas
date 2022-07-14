@@ -13,8 +13,9 @@ const GetMenusByPrice = gql`
 
 const GetPostsByNewest = gql`
     query MyQuery {
-        posts(order_by: { id: desc }) {
+        posts(order_by: { created_at: desc }) {
             id
+            created_at
             title
             content
         }

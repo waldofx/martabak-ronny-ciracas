@@ -43,6 +43,7 @@ const InsertPosts = gql`
     mutation MyMutation($object: posts_insert_input = {}) {
         insert_posts_one(object: $object) {
             id
+            created_at
             title
             content
         }
@@ -55,6 +56,7 @@ const DeletePosts = gql`
             affected_rows
             returning {
                 id
+                created_at
                 title
                 content
             }
@@ -67,6 +69,7 @@ const UpdatePosts = gql`
         update_posts(_set: $object, where: { id: { _eq: $id } }) {
             returning {
                 id
+                created_at
                 title
                 content
             }
