@@ -37,18 +37,21 @@ function CreatePost() {
         dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
 
-        insertPosts({
-            variables: {
-                object: {
-                    created_at: date,
-                    title: formData.title,
-                    content: formData.content,
+        if (formData.title === "" || formData.content === "") {
+            alert("Data belum lengkap!");
+        } else {
+            insertPosts({
+                variables: {
+                    object: {
+                        created_at: date,
+                        title: formData.title,
+                        content: formData.content,
+                    },
                 },
-            },
-        });
-
-        alert("Data berhasil dikirim ke database!");
-        history.push("/post");
+            });
+            alert("Data berhasil dikirim ke database!");
+            history.push("/post");
+        }
     }
 
     return (
