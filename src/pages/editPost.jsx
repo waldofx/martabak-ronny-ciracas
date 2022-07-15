@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
@@ -23,6 +24,10 @@ const GetPostByID = gql`
 `;
 
 function EditPost() {
+    //auth check
+    let adminData = useSelector((state) => state.adminData.adminData);
+    let isAdmin = adminData.status;
+
     //initial detail
     const { id } = useParams();
     const { data } = useQuery(GetPostByID, {
@@ -61,6 +66,10 @@ function EditPost() {
         e.preventDefault();
         dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
+
+        if (!isAdmin) {
+            return alert("Anda belum login!");
+        }
 
         if (formData.title === "" || formData.content === "") {
             alert("Data belum lengkap!");

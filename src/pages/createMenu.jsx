@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
@@ -13,6 +14,10 @@ import { addFormData } from "../store/formDataSlice";
 import useInsertMenu from "../hooks/useInsertMenus";
 
 function CreateMenu() {
+    //auth check
+    let adminData = useSelector((state) => state.adminData.adminData);
+    let isAdmin = adminData.status;
+
     const [formData, setFormData] = useState({
         img: "",
         name: "",
@@ -47,6 +52,10 @@ function CreateMenu() {
         e.preventDefault();
         dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
+
+        if (!isAdmin) {
+            return alert("Anda belum login!");
+        }
 
         if (formData.name === "" || formData.price === "" || formData.img === "") {
             alert("Data belum lengkap!");

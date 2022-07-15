@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -11,6 +12,10 @@ import { addFormData } from "../store/formDataSlice";
 import useInsertPost from "../hooks/useInsertPosts";
 
 function CreatePost() {
+    //auth check
+    let adminData = useSelector((state) => state.adminData.adminData);
+    let isAdmin = adminData.status;
+
     const [formData, setFormData] = useState({
         title: "",
         content: "",
@@ -36,6 +41,10 @@ function CreatePost() {
         e.preventDefault();
         dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
+
+        if (!isAdmin) {
+            return alert("Anda belum login!");
+        }
 
         if (formData.title === "" || formData.content === "") {
             alert("Data belum lengkap!");

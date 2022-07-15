@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
@@ -26,6 +27,10 @@ const GetMenuByID = gql`
 `;
 
 function EditMenu() {
+    //auth check
+    let adminData = useSelector((state) => state.adminData.adminData);
+    let isAdmin = adminData.status;
+
     //initial detail
     const { id } = useParams();
     const { data } = useQuery(GetMenuByID, {
@@ -80,6 +85,10 @@ function EditMenu() {
         e.preventDefault();
         dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
+
+        if (!isAdmin) {
+            return alert("Anda belum login!");
+        }
 
         if (formData.name === "" || formData.price === "" || formData.img === "") {
             alert("Data belum lengkap!");
