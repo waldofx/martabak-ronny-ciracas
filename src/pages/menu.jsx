@@ -50,6 +50,68 @@ function Menu() {
         };
     }
 
+    //handle cart order
+    const [Order, setOrder] = useState({
+        menuItems: "",
+        totalPrice: 0,
+    });
+
+    const { menuItems, totalPrice } = Order;
+
+    function handleIncrement(name, price) {
+        return function (e) {
+            // console.log(name, "plus");
+            console.log("current order: ", Order);
+            setOrder((prev) => {
+                return {
+                    ...prev,
+                    menuItems: prev.menuItems === "" ? name : prev.menuItems + ", " + name,
+                    totalPrice: prev.totalPrice <= 0 ? price : prev.totalPrice + price,
+                };
+            });
+        };
+    }
+
+    // function handleDecrement(name, price) {
+    //     return function (e) {
+    //         // console.log(name, "minus");
+    //         console.log("current order: ", Order);
+    //         setOrder((prev) => {
+    //             return {
+    //                 ...prev,
+    //                 menuItems: prev.menuItems - name,
+    //                 totalPrice: prev.totalPrice > 0 ? prev.totalPrice - price : 0,
+    //             };
+    //         });
+    //         dispatch(addOrderData(Order));
+    //         console.log("post set order: ", Order);
+    //     };
+    // }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        let message = `Saya pesan ${menuItems} yang bertotal harga Rp. ${totalPrice}.`;
+        // Appending the phone number to the URL
+        let url = `https://web.whatsapp.com/send?phone=6282260679579`;
+        // Appending the message to the URL by encoding it
+        url += `&text=${encodeURI(message)}&app_absent=0`;
+        // Open our newly created URL in a new tab to send the message
+        window.open(url);
+    }
+
+    //order
+    const onClear = (e) => {
+        e.preventDefault();
+        setOrder((prev) => {
+            return {
+                ...prev,
+                totalPrice: 0,
+                menuItems: "",
+            };
+        });
+    };
+
     // ----------------- render -------------------------
     return (
         <div className="bg-gray-100">
@@ -88,6 +150,22 @@ function Menu() {
                                             </div>
                                             <h3 className="mt-4 text-md text-gray-700">{menudata.name}</h3>
                                             <p className="mt-1 text-lg font-medium text-gray-900">Rp. {menudata.price}</p>
+                                            <div>
+                                                <div className="mt-4">
+                                                    {/* <button
+                                                        onClick={handleDecrement(menudata.name, menudata.price)}
+                                                        className="text-white font-bold bg-red-600 hover:bg-red-800 py-2 px-4 rounded mr-5"
+                                                    >
+                                                        -
+                                                    </button> */}
+                                                    <button
+                                                        onClick={handleIncrement(menudata.name, menudata.price)}
+                                                        className="text-white font-bold bg-green-600 hover:bg-green-800 py-2 px-4 rounded"
+                                                    >
+                                                        +
+                                                    </button>
+                                                </div>
+                                            </div>
                                             {isAdmin && (
                                                 <div className="mt-4">
                                                     <button
@@ -119,7 +197,7 @@ function Menu() {
                     Setelah memilih yang ingin dipesan, silahkan memesan melalui Whatsapp <strong> No 0822-6067-9579 </strong>{" "}
                     Atau Klik di sini
                     <a
-                        href="https://api.whatsapp.com/send?phone=6282260679579"
+                        href="https://web.whatsapp.com/send?phone=6282260679579"
                         className="ml-2"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -144,6 +222,46 @@ function Menu() {
                         <p>Atau Bayar melalui OVO atas nama Martabak Bangka Ronny.</p>
                         <p>Setelah sudah konfirmasi bayar pesanan silahkan ambil pesanan pada lokasi toko.</p>
                     </div>
+
+                    <div class="p-6 border border-gray-300 sm:rounded-md md:w-96 md:max-w-full mx-auto my-5">
+                        <form onSubmit={handleSubmit} action="">
+                            <label class="block mb-6">
+                                <span class="text-gray-700">Harga</span>
+                                <input
+                                    name="totalPrice"
+                                    type="text"
+                                    class="block w-full mt-1 border-gray-300 rounded-mdshadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    placeholder="joe.bloggs@example.com"
+                                    value={Order.totalPrice}
+                                />
+                            </label>
+                            <label class="block mb-6">
+                                <span class="text-gray-700">Pesanan</span>
+                                <textarea
+                                    name="menuItems"
+                                    class="block w-full mt-1 border-gray-300rounded-md shadow-sm focus:border-indigo-300focus:ringfocus:ring-indigo-200focus:ring-opacity-50"
+                                    rows="3"
+                                    value={Order.menuItems}
+                                    placeholder="Klik tombol hijau '+' pada menu yang diinginkan untuk masukan pesanan."
+                                ></textarea>
+                            </label>
+                            <div class="mb-6">
+                                <button
+                                    type="submit"
+                                    class="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
+                                >
+                                    Pesan
+                                </button>
+                                <button
+                                    onClick={onClear}
+                                    class="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
+                                >
+                                    Clear
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 place-items-center">
                         <img
                             src={QRIS_BCA}
