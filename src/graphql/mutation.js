@@ -78,4 +78,15 @@ const UpdatePosts = gql`
     }
 `;
 
-export { InsertMenus, DeleteMenus, UpdateMenus, InsertPosts, DeletePosts, UpdatePosts };
+const InsertOrders = gql`
+    mutation MyMutation($object: orders_insert_input = {}) {
+        insert_orders_one(object: $object) {
+            id
+            menu_items
+            total_price
+            created_at
+        }
+    }
+`;
+
+export { InsertMenus, DeleteMenus, UpdateMenus, InsertPosts, DeletePosts, UpdatePosts, InsertOrders };

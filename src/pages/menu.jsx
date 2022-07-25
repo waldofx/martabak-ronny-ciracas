@@ -9,6 +9,7 @@ import LoadingSVG from "../components/loadingsvg";
 //import hooks
 import useGetMenusByPrice from "../hooks/useGetMenusByPrice";
 import useDeleteMenus from "../hooks/useDeleteMenus";
+import useInsertOrder from "../hooks/useInsertOrders";
 
 //import assets
 import QRIS_BCA from "../assets/img/QRIS_BCA.png";
@@ -88,18 +89,6 @@ function Menu() {
     //     };
     // }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-
-        let message = `Saya pesan ${menuItems} yang bertotal harga Rp. ${totalPrice}.`;
-        // Appending the phone number to the URL
-        let url = `https://web.whatsapp.com/send?phone=6282260679579`;
-        // Appending the message to the URL by encoding it
-        url += `&text=${encodeURI(message)}&app_absent=0`;
-        // Open our newly created URL in a new tab to send the message
-        window.open(url);
-    }
-
     //order
     const onClear = (e) => {
         e.preventDefault();
@@ -111,6 +100,32 @@ function Menu() {
             };
         });
     };
+
+    const { insertOrders } = useInsertOrder();
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        if (Order.totalPrice <= 0 || Order.menuItems === "") {
+            alert("Anda belum memilih pesanan!");
+        } else {
+            let message = `Salam, Saya ingin pesan ${menuItems} yang bertotal harga Rp. ${totalPrice}. Apakah tersedia?`;
+            // Appending the phone number to the URL
+            let url = `https://web.whatsapp.com/send?phone=6282260679579`;
+            // Appending the message to the URL by encoding it
+            url += `&text=${encodeURI(message)}&app_absent=0`;
+            // Open our newly created URL in a new tab to send the message
+            window.open(url);
+            insertOrders({
+                variables: {
+                    object: {
+                        menu_items: Order.menuItems,
+                        total_price: Order.totalPrice,
+                    },
+                },
+            });
+        }
+    }
 
     // ----------------- render -------------------------
     return (
@@ -214,23 +229,15 @@ function Menu() {
                     </a>
                 </p>
                 <div className="mb-10">
-                    <div className="mb-5">
-                        <p>
-                            Setelah konfirmasi pesanan, silahkan bayar melalui transfer BCA - Rek. BCA atas nama Thjie Njun Tet
-                            628 118 2801.
-                        </p>
-                        <p>Atau Bayar melalui OVO atas nama Martabak Bangka Ronny.</p>
-                        <p>Setelah sudah konfirmasi bayar pesanan silahkan ambil pesanan pada lokasi toko.</p>
-                    </div>
-
                     <div class="p-6 border border-gray-300 sm:rounded-md md:w-96 md:max-w-full mx-auto my-5">
                         <form onSubmit={handleSubmit} action="">
                             <label class="block mb-6">
-                                <span class="text-gray-700">Harga</span>
+                                <span class="text-gray-700">Total Harga</span>
                                 <input
+                                    disabled
                                     name="totalPrice"
                                     type="text"
-                                    class="block w-full mt-1 border-gray-300 rounded-mdshadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     placeholder="joe.bloggs@example.com"
                                     value={Order.totalPrice}
                                 />
@@ -238,8 +245,9 @@ function Menu() {
                             <label class="block mb-6">
                                 <span class="text-gray-700">Pesanan</span>
                                 <textarea
+                                    disabled
                                     name="menuItems"
-                                    class="block w-full mt-1 border-gray-300rounded-md shadow-sm focus:border-indigo-300focus:ringfocus:ring-indigo-200focus:ring-opacity-50"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     rows="3"
                                     value={Order.menuItems}
                                     placeholder="Klik tombol hijau '+' pada menu yang diinginkan untuk masukan pesanan."
@@ -248,18 +256,27 @@ function Menu() {
                             <div class="mb-6">
                                 <button
                                     type="submit"
-                                    class="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
+                                    class="mr-5 h-10 px-5 text-white bg-green-700 hover:bg-green-900 rounded-lg transition-colors duration-150 focus:shadow-outline"
                                 >
                                     Pesan
                                 </button>
                                 <button
                                     onClick={onClear}
-                                    class="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
+                                    class="ml-5 h-10 px-5 text-white bg-blue-500 hover:bg-blue-700 rounded-lg transition-colors duration-150 focus:shadow-outline"
                                 >
                                     Clear
                                 </button>
                             </div>
                         </form>
+                    </div>
+
+                    <div className="mb-5">
+                        <p>
+                            Setelah konfirmasi pesanan, silahkan bayar melalui transfer BCA - Rek. BCA atas nama Thjie Njun Tet
+                            628 118 2801.
+                        </p>
+                        <p>Atau Bayar melalui OVO atas nama Martabak Bangka Ronny.</p>
+                        <p>Setelah sudah konfirmasi bayar pesanan silahkan ambil pesanan pada lokasi toko.</p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 place-items-center">
