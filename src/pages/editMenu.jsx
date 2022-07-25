@@ -158,6 +158,7 @@ function EditMenu() {
                                 placeholder={formData.name}
                                 value={formData.name}
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     </div>
@@ -176,6 +177,7 @@ function EditMenu() {
                                 placeholder={formData.price}
                                 value={formData.price}
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     </div>

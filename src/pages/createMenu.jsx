@@ -110,6 +110,7 @@ function CreateMenu() {
                                 type="text"
                                 placeholder="Martabak"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     </div>
@@ -127,6 +128,7 @@ function CreateMenu() {
                                 type="number"
                                 placeholder="0"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     </div>
@@ -144,6 +146,7 @@ function CreateMenu() {
                                 type="file"
                                 accept="image/png, image/jpeg"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     </div>

@@ -80,6 +80,7 @@ function Login() {
                                 type="text"
                                 placeholder="admin"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     </div>
@@ -97,6 +98,7 @@ function Login() {
                                 type="password"
                                 placeholder="******************"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     </div>
