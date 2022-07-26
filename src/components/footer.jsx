@@ -7,7 +7,7 @@ function Footer() {
                 <div class="grid lg:grid-cols-2 gap-4">
                     <div class="mb-6 md:mb-0">
                         <h5 class="font-medium mb-2 uppercase">Hubungi kami melalui:</h5>
-                        <p> No. Telp: 0817-4932-144</p>
+                        <p> No. Telp: 0822-6067-9579</p>
                         <p> Email: martabakbangka039@gmail.com</p>
                     </div>
 
