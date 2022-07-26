@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
@@ -10,7 +9,6 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 
 //import hooks
-import { addFormData } from "../store/formDataSlice";
 import useUpdatePost from "../hooks/useUpdatePosts";
 
 const GetPostByID = gql`
@@ -39,7 +37,6 @@ function EditPost() {
         content: "",
     });
 
-    const dispatch = useDispatch();
     const history = useHistory();
 
     const { updatePosts } = useUpdatePost();
@@ -64,7 +61,6 @@ function EditPost() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
 
         if (!isAdmin) {

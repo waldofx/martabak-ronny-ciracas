@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 //import components
@@ -8,7 +7,6 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 
 //import hooks
-import { addFormData } from "../store/formDataSlice";
 import useInsertPost from "../hooks/useInsertPosts";
 
 function CreatePost() {
@@ -24,7 +22,6 @@ function CreatePost() {
     const current = new Date();
     const date = `${current.getFullYear()}/${current.getMonth() + 1}/${current.getDate()}`;
 
-    const dispatch = useDispatch();
     const history = useHistory();
     const { insertPosts } = useInsertPost();
 
@@ -39,7 +36,6 @@ function CreatePost() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
 
         if (!isAdmin) {

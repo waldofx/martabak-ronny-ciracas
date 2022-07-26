@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { app } from "../base";
@@ -10,7 +9,6 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 
 //import hooks
-import { addFormData } from "../store/formDataSlice";
 import useInsertMenu from "../hooks/useInsertMenus";
 
 function CreateMenu() {
@@ -25,7 +23,6 @@ function CreateMenu() {
         file: "",
     });
 
-    const dispatch = useDispatch();
     const history = useHistory();
     const { insertMenus } = useInsertMenu();
 
@@ -50,7 +47,6 @@ function CreateMenu() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(addFormData(formData));
         console.log("Data submitted: ", formData);
 
         if (!isAdmin) {
