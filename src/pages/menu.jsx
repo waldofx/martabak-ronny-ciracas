@@ -39,13 +39,13 @@ function Menu() {
     const { deleteMenus } = useDeleteMenus();
     function handleDelete(id) {
         return function (e) {
-            if (window.confirm("Are you sure you want to delete this menu?")) {
+            if (window.confirm("Apa anda yakin ingin menghapus menu ini?")) {
                 deleteMenus({
                     variables: {
                         id: id,
                     },
                 });
-                window.alert("Menu deleted!");
+                window.alert("Menu terhapus!");
                 window.location.reload(false);
             }
         };

@@ -34,13 +34,13 @@ function Post() {
     const { deletePosts } = useDeletePosts();
     function handleDelete(id) {
         return function (e) {
-            if (window.confirm("Are you sure you want to delete this post?")) {
+            if (window.confirm("Apa anda yakin ingin menghapus post ini?")) {
                 deletePosts({
                     variables: {
                         id: id,
                     },
                 });
-                window.alert("Post deleted!");
+                window.alert("Post terhapus!");
                 window.location.reload(false);
             }
         };

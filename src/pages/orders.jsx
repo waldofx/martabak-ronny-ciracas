@@ -35,13 +35,13 @@ function Orders() {
     const { deleteOrder } = useDeleteOrder();
     function handleDelete(id) {
         return function (e) {
-            if (window.confirm("Are you sure you want to delete this order?")) {
+            if (window.confirm("Apa anda yakin ingin menghapus pesanan ini?")) {
                 deleteOrder({
                     variables: {
                         id: id,
                     },
                 });
-                window.alert("Order deleted!");
+                window.alert("Pesanan terhapus!");
                 window.location.reload(false);
             }
         };
@@ -77,7 +77,7 @@ function Orders() {
                 });
             }
 
-            window.alert("Status updated!");
+            window.alert("Status diperbarui!");
         };
     }
 
@@ -96,9 +96,9 @@ function Orders() {
                         <table class="table-fixed">
                             <thead>
                                 <tr>
-                                    <th class="w-1/3 px-4 py-2">Menu Items</th>
-                                    <th class="w-1/6 px-4 py-2">Price</th>
-                                    <th class="w-1/6 px-4 py-2">Created at</th>
+                                    <th class="w-1/3 px-4 py-2">Pesanan</th>
+                                    <th class="w-1/6 px-4 py-2">Harga</th>
+                                    <th class="w-1/6 px-4 py-2">Waktu Pemesanan</th>
                                     <th class="w-1/6 px-4 py-2">Status</th>
                                 </tr>
                             </thead>
@@ -121,13 +121,13 @@ function Orders() {
                                                 className="text-white font-bold bg-green-600 hover:bg-green-800 py-1 px-1 rounded mr-3"
                                                 onClick={handleUpdate(orderdata.id, orderdata.status)}
                                             >
-                                                Status
+                                                Ganti Status
                                             </button>
                                             <button
                                                 className="text-white font-bold bg-red-600 hover:bg-red-800 py-1 px-1 rounded"
                                                 onClick={handleDelete(orderdata.id)}
                                             >
-                                                Hapus
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
