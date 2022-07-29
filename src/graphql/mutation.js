@@ -85,8 +85,39 @@ const InsertOrders = gql`
             menu_items
             total_price
             created_at
+            status
         }
     }
 `;
 
-export { InsertMenus, DeleteMenus, UpdateMenus, InsertPosts, DeletePosts, UpdatePosts, InsertOrders };
+const DeleteOrders = gql`
+    mutation MyMutation($id: Int!) {
+        delete_orders(where: { id: { _eq: $id } }) {
+            affected_rows
+            returning {
+                id
+                menu_items
+                total_price
+                created_at
+                status
+            }
+        }
+    }
+`;
+
+const UpdateOrders = gql`
+    mutation MyMutation2($object: orders_set_input = {}, $id: Int!) {
+        update_orders(_set: $object, where: { id: { _eq: $id } }) {
+            returning {
+                id
+                menu_items
+                total_price
+                created_at
+                status
+            }
+            affected_rows
+        }
+    }
+`;
+
+export { InsertMenus, DeleteMenus, UpdateMenus, InsertPosts, DeletePosts, UpdatePosts, InsertOrders, DeleteOrders, UpdateOrders };

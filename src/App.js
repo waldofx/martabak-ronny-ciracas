@@ -15,6 +15,7 @@ import EditMenu from "./pages/editMenu";
 import Post from "./pages/post";
 import CreatePost from "./pages/createPost";
 import EditPost from "./pages/editPost";
+import Orders from "./pages/orders";
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/post" exact component={Post} />
                         <Route path="/post/create" exact component={CreatePost} />
                         <Route path="/post/edit/:id" exact component={EditPost} />
+                        <Route path="/orders" exact component={Orders} />
                     </Switch>
                 </Router>
             </PersistGate>

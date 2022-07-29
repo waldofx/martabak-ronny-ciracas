@@ -22,4 +22,16 @@ const GetPostsByNewest = gql`
     }
 `;
 
-export { GetMenusByPrice, GetPostsByNewest };
+const GetOrdersByNewest = gql`
+    query MyQuery {
+        orders(order_by: { created_at: desc }) {
+            id
+            created_at
+            menu_items
+            total_price
+            status
+        }
+    }
+`;
+
+export { GetMenusByPrice, GetPostsByNewest, GetOrdersByNewest };

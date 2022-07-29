@@ -101,6 +101,7 @@ function Menu() {
                     object: {
                         menu_items: Order.menuItems,
                         total_price: Order.totalPrice,
+                        status: false,
                     },
                 },
             });
