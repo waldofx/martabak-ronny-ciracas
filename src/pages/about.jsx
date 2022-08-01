@@ -13,7 +13,7 @@ function About() {
     return (
         <div className="bg-gray-100">
             <Header />
-            <div className="mx-20">
+            <div className="px-5 lg:px-20">
                 <div>
                     <h1 className="text-5xl font-bold text-red-600 flex justify-center mb-10">Martabak Ronny Ciracas</h1>
                     <h6 className="font-bold mb-1">Mengenai Toko Martabak Ronny Ciracas</h6>

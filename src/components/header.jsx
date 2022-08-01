@@ -67,6 +67,11 @@ function Header() {
                     <a href="/post" class="block mt-4 lg:inline-block lg:mt-0 text-amber-50 hover:text-white mr-4">
                         Post
                     </a>
+                    {isAdmin && (
+                        <a href="/orders" class="block mt-4 lg:inline-block lg:mt-0 text-amber-50 hover:text-white mr-4">
+                            Orders
+                        </a>
+                    )}
                 </div>
                 {!isAdmin ? (
                     <div>

@@ -113,7 +113,7 @@ function Menu() {
         <div className="bg-gray-100">
             <Header />
 
-            <div className="container mx-5">
+            <div className="containerp px-5 mb-5">
                 {isAdmin && (
                     <a
                         href="/menu/create"
@@ -124,7 +124,7 @@ function Menu() {
                 )}
             </div>
 
-            <div className="container mx-5">
+            <div className="container px-5">
                 <h1 className="text-5xl font-bold text-red-600 flex justify-center mb-8">Daftar Menu</h1>
 
                 {isError && <p>Something Went Wrong...</p>}
@@ -158,18 +158,18 @@ function Menu() {
                                             </div>
                                             {isAdmin && (
                                                 <div className="mt-4">
+                                                    <a
+                                                        href={`/menu/edit/${menudata.id}`}
+                                                        className="text-white font-bold bg-green-600 hover:bg-green-800 py-2 px-2 rounded mr-5"
+                                                    >
+                                                        EDIT
+                                                    </a>
                                                     <button
-                                                        className="text-white font-bold bg-red-600 hover:bg-red-800 py-2 px-2 rounded mr-5"
+                                                        className="text-white font-bold bg-red-600 hover:bg-red-800 py-2 px-2 rounded"
                                                         onClick={handleDelete(menudata.id)}
                                                     >
                                                         DELETE
                                                     </button>
-                                                    <a
-                                                        href={`/menu/edit/${menudata.id}`}
-                                                        className="text-white font-bold bg-green-600 hover:bg-green-800 py-2 px-2 rounded"
-                                                    >
-                                                        EDIT
-                                                    </a>
                                                 </div>
                                             )}
                                         </div>

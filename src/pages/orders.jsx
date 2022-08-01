@@ -35,6 +35,10 @@ function Orders() {
     const { deleteOrder } = useDeleteOrder();
     function handleDelete(id) {
         return function (e) {
+            if (!isAdmin) {
+                return alert("Anda belum login!");
+            }
+
             if (window.confirm("Apa anda yakin ingin menghapus pesanan ini?")) {
                 deleteOrder({
                     variables: {
@@ -86,7 +90,7 @@ function Orders() {
         <div className="bg-gray-100">
             <Header />
 
-            <div className="container mx-5">
+            <div className="container px-5">
                 <h1 className="text-5xl font-bold text-red-600 flex justify-center mb-8">Daftar Pesanan</h1>
 
                 {isError && <p>Something Went Wrong...</p>}
@@ -116,20 +120,22 @@ function Orders() {
                                                 : "Status tidak diketahui"}
                                         </td>
 
-                                        <td>
-                                            <button
-                                                className="text-white font-bold bg-green-600 hover:bg-green-800 py-1 px-1 rounded mr-3"
-                                                onClick={handleUpdate(orderdata.id, orderdata.status)}
-                                            >
-                                                Ganti Status
-                                            </button>
-                                            <button
-                                                className="text-white font-bold bg-red-600 hover:bg-red-800 py-1 px-1 rounded"
-                                                onClick={handleDelete(orderdata.id)}
-                                            >
-                                                Delete
-                                            </button>
-                                        </td>
+                                        {isAdmin && (
+                                            <td>
+                                                <button
+                                                    className="text-white font-bold bg-green-600 hover:bg-green-800 py-1 px-1 rounded mr-3"
+                                                    onClick={handleUpdate(orderdata.id, orderdata.status)}
+                                                >
+                                                    Ganti Status
+                                                </button>
+                                                <button
+                                                    className="text-white font-bold bg-red-600 hover:bg-red-800 py-1 px-1 rounded"
+                                                    onClick={handleDelete(orderdata.id)}
+                                                >
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        )}
                                     </tr>
                                 ))}
                             </tbody>
