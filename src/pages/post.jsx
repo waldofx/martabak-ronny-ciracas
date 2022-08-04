@@ -92,7 +92,7 @@ function Post() {
                                                         className="text-white font-bold bg-red-600 hover:bg-red-800 py-2 px-2 rounded"
                                                         onClick={handleDelete(postdata.id)}
                                                     >
-                                                        DELETE
+                                                        HAPUS
                                                     </button>
                                                 </div>
                                             )}

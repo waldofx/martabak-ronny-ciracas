@@ -126,13 +126,13 @@ function Orders() {
                                                     className="text-white font-bold bg-green-600 hover:bg-green-800 py-1 px-1 rounded mr-3"
                                                     onClick={handleUpdate(orderdata.id, orderdata.status)}
                                                 >
-                                                    Ganti Status
+                                                    GANTI STATUS
                                                 </button>
                                                 <button
                                                     className="text-white font-bold bg-red-600 hover:bg-red-800 py-1 px-1 rounded"
                                                     onClick={handleDelete(orderdata.id)}
                                                 >
-                                                    Delete
+                                                    HAPUS
                                                 </button>
                                             </td>
                                         )}
